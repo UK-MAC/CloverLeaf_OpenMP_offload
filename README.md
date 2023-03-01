@@ -20,7 +20,7 @@ Due to limitations in data movement for Fortran data types, this version does no
 
 ## Performance
 
-Expected performance is give below.
+Expected performance is given below.
 
 If you do not see this performance, or you see variability, then is it recommended that you check MPI task placement and OpenMP thread affinities, because it is essential these are pinned and placed optimally to obtain best performance.
 
