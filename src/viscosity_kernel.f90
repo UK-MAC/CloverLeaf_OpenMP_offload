@@ -47,7 +47,7 @@ CONTAINS
     REAL(KIND=8)  :: ugrad,vgrad,grad2,pgradx,pgrady,pgradx2,pgrady2,grad     &
       ,ygrad,pgrad,xgrad,div,strain2,limiter,dirx,diry
 
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
 
     DO k=y_min,y_max
       DO j=x_min,x_max

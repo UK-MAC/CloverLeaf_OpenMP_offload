@@ -58,7 +58,7 @@ CONTAINS
       y_inc=1
     ENDIF
 
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
     DO k=y_min-depth,y_max+y_inc+depth
       DO j=1,depth
         index= buffer_offset + j+(k+depth-1)*depth
@@ -105,7 +105,7 @@ CONTAINS
     ENDIF
 
 !$omp target update to(left_rcv_buffer)
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
     DO k=y_min-depth,y_max+y_inc+depth
       DO j=1,depth
         index= buffer_offset + j+(k+depth-1)*depth
@@ -150,7 +150,7 @@ CONTAINS
       y_inc=1
     ENDIF
 
-!$omp target teams distribute parallel do    
+!$omp target teams distribute parallel do simd collapse(2)
     DO k=y_min-depth,y_max+y_inc+depth
       DO j=1,depth
         index= buffer_offset + j+(k+depth-1)*depth
@@ -196,7 +196,7 @@ CONTAINS
       y_inc=1
     ENDIF
 !$omp target update to(right_rcv_buffer)
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
     DO k=y_min-depth,y_max+y_inc+depth
       DO j=1,depth
         index= buffer_offset + j+(k+depth-1)*depth
@@ -240,7 +240,7 @@ CONTAINS
       x_inc=0
       y_inc=1
     ENDIF
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
     DO k=1,depth
       DO j=x_min-depth,x_max+x_inc+depth
         index= buffer_offset + k+(j+depth-1)*depth
@@ -286,7 +286,7 @@ CONTAINS
       y_inc=1
     ENDIF
 !$omp target update to(top_rcv_buffer)
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
     DO k=1,depth
       DO j=x_min-depth,x_max+x_inc+depth
         index= buffer_offset + k+(j+depth-1)*depth
@@ -332,7 +332,7 @@ CONTAINS
       y_inc=1
     ENDIF
 
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
     DO k=1,depth
       DO j=x_min-depth,x_max+x_inc+depth
         index= buffer_offset + k+(j+depth-1)*depth
@@ -379,7 +379,7 @@ CONTAINS
       y_inc=1
     ENDIF
 !$omp target update to(bottom_rcv_buffer)
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
     DO k=1,depth
       DO j=x_min-depth,x_max+x_inc+depth
         index= buffer_offset + k+(j+depth-1)*depth

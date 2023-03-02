@@ -42,7 +42,7 @@ CONTAINS
 
     REAL(KIND=8) :: sound_speed_squared,v,pressurebyenergy,pressurebyvolume
 
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
     DO k=y_min,y_max
       DO j=x_min,x_max
         v=1.0_8/density(j,k)

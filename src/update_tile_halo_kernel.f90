@@ -91,7 +91,7 @@ CONTAINS
    
 
     IF(fields(FIELD_DENSITY0).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+depth
         DO j=1,depth
           density0(x_min-j,k)=left_density0(left_xmax+1-j,k)
@@ -101,7 +101,7 @@ CONTAINS
 
     ! Density 1
     IF(fields(FIELD_DENSITY1).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+depth
         DO j=1,depth
           density1(x_min-j,k)=left_density1(left_xmax+1-j,k)
@@ -112,7 +112,7 @@ CONTAINS
    
     ! Energy 0
     IF(fields(FIELD_ENERGY0).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+depth
         DO j=1,depth
           energy0(x_min-j,k)=left_energy0(left_xmax+1-j,k)
@@ -122,7 +122,7 @@ CONTAINS
 
     ! Energy 1
     IF(fields(FIELD_DENSITY1).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+depth
         DO j=1,depth
           energy1(x_min-j,k)=left_energy1(left_xmax+1-j,k)
@@ -133,7 +133,7 @@ CONTAINS
   
     ! Pressure
     IF(fields(FIELD_PRESSURE).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+depth
         DO j=1,depth
           pressure(x_min-j,k)=left_pressure(left_xmax+1-j,k)
@@ -143,7 +143,7 @@ CONTAINS
 
     ! Viscocity
     IF(fields(FIELD_VISCOSITY).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+depth
         DO j=1,depth
           viscosity(x_min-j,k)=left_viscosity(left_xmax+1-j,k)
@@ -153,7 +153,7 @@ CONTAINS
 
     ! Soundspeed
     IF(fields(FIELD_SOUNDSPEED).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+depth
         DO j=1,depth
           soundspeed(x_min-j,k)=left_soundspeed(left_xmax+1-j,k)
@@ -164,7 +164,7 @@ CONTAINS
 
     ! XVEL 0
     IF(fields(FIELD_XVEL0).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+1+depth
         DO j=1,depth
           xvel0(x_min-j,k)=left_xvel0(left_xmax+1-j,k)
@@ -174,7 +174,7 @@ CONTAINS
 
     ! XVEL 1
     IF(fields(FIELD_XVEL1).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+1+depth
         DO j=1,depth
           xvel1(x_min-j,k)=left_xvel1(left_xmax+1-j,k)
@@ -184,7 +184,7 @@ CONTAINS
 
     ! YVEL 0
     IF(fields(FIELD_YVEL0).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+1+depth
         DO j=1,depth
           yvel0(x_min-j,k)=left_yvel0(left_xmax+1-j,k)
@@ -194,7 +194,7 @@ CONTAINS
 
     ! YVEL 1
     IF(fields(FIELD_YVEL1).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+1+depth
         DO j=1,depth
           yvel1(x_min-j,k)=left_yvel1(left_xmax+1-j,k)
@@ -204,7 +204,7 @@ CONTAINS
 
     ! VOL_FLUX_X
     IF(fields(FIELD_VOL_FLUX_X).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+depth
         DO j=1,depth
           vol_flux_x(x_min-j,k)=left_vol_flux_x(left_xmax+1-j,k)
@@ -214,7 +214,7 @@ CONTAINS
 
     ! MASS_FLUX_X
     IF(fields(FIELD_MASS_FLUX_X).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+depth
         DO j=1,depth
           mass_flux_x(x_min-j,k)=left_mass_flux_x(left_xmax+1-j,k)
@@ -224,7 +224,7 @@ CONTAINS
 
     ! VOL_FLUX_Y
     IF(fields(FIELD_VOL_FLUX_Y).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+1+depth
         DO j=1,depth
           vol_flux_y(x_min-j,k)=left_vol_flux_y(left_xmax+1-j,k)
@@ -234,7 +234,7 @@ CONTAINS
 
     ! MASS_FLUX_Y
     IF(fields(FIELD_MASS_FLUX_Y).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+1+depth
         DO j=1,depth
           mass_flux_y(x_min-j,k)=left_mass_flux_y(left_xmax+1-j,k)
@@ -307,7 +307,7 @@ CONTAINS
 
     ! Density 0
     IF(fields(FIELD_DENSITY0).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+depth
         DO j=1,depth
           density0(x_max+j,k)=right_density0(right_xmin-1+j,k)
@@ -317,7 +317,7 @@ CONTAINS
 
     ! Density 1
     IF(fields(FIELD_DENSITY1).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+depth
         DO j=1,depth
           density1(x_max+j,k)=right_density1(right_xmin-1+j,k)
@@ -328,7 +328,7 @@ CONTAINS
    
     ! Energy 0
     IF(fields(FIELD_ENERGY0).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+depth
         DO j=1,depth
           energy0(x_max+j,k)=right_energy0(right_xmin-1+j,k)
@@ -338,7 +338,7 @@ CONTAINS
 
     ! Energy 1
     IF(fields(FIELD_DENSITY1).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+depth
         DO j=1,depth
           energy1(x_max+j,k)=right_energy1(right_xmin-1+j,k)
@@ -349,7 +349,7 @@ CONTAINS
   
     ! Pressure
     IF(fields(FIELD_PRESSURE).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+depth
         DO j=1,depth
           pressure(x_max+j,k)=right_pressure(right_xmin-1+j,k)
@@ -359,7 +359,7 @@ CONTAINS
 
     ! Viscocity
     IF(fields(FIELD_VISCOSITY).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+depth
         DO j=1,depth
           viscosity(x_max+j,k)=right_viscosity(right_xmin-1+j,k)
@@ -369,7 +369,7 @@ CONTAINS
 
     ! Soundspeed
     IF(fields(FIELD_SOUNDSPEED).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+depth
         DO j=1,depth
           soundspeed(x_max+j,k)=right_soundspeed(right_xmin-1+j,k)
@@ -380,7 +380,7 @@ CONTAINS
 
     ! XVEL 0
     IF(fields(FIELD_XVEL0).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+1+depth
         DO j=1,depth
           xvel0(x_max+1+j,k)=right_xvel0(right_xmin+1-1+j,k)
@@ -390,7 +390,7 @@ CONTAINS
 
     ! XVEL 1
     IF(fields(FIELD_XVEL1).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+1+depth
         DO j=1,depth
           xvel1(x_max+1+j,k)=right_xvel1(right_xmin+1-1+j,k)
@@ -400,7 +400,7 @@ CONTAINS
 
     ! YVEL 0
     IF(fields(FIELD_YVEL0).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+1+depth
         DO j=1,depth
           yvel0(x_max+1+j,k)=right_yvel0(right_xmin+1-1+j,k)
@@ -410,7 +410,7 @@ CONTAINS
 
     ! YVEL 1
     IF(fields(FIELD_YVEL1).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+1+depth
         DO j=1,depth
           yvel1(x_max+1+j,k)=right_yvel1(right_xmin+1-1+j,k)
@@ -420,7 +420,7 @@ CONTAINS
 
     ! VOL_FLUX_X
     IF(fields(FIELD_VOL_FLUX_X).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+depth
         DO j=1,depth
           vol_flux_x(x_max+1+j,k)=right_vol_flux_x(right_xmin+1-1+j,k)
@@ -430,7 +430,7 @@ CONTAINS
 
     ! MASS_FLUX_X
     IF(fields(FIELD_MASS_FLUX_X).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+depth
         DO j=1,depth
           mass_flux_x(x_max+1+j,k)=right_mass_flux_x(right_xmin+1-1+j,k)
@@ -440,7 +440,7 @@ CONTAINS
 
     ! VOL_FLUX_Y
     IF(fields(FIELD_VOL_FLUX_Y).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+1+depth
         DO j=1,depth
           vol_flux_y(x_max+j,k)=right_vol_flux_y(right_xmin-1+j,k)
@@ -450,7 +450,7 @@ CONTAINS
 
     ! MASS_FLUX_Y
     IF(fields(FIELD_MASS_FLUX_Y).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min-depth,y_max+1+depth
         DO j=1,depth
           mass_flux_y(x_max+j,k)=right_mass_flux_y(right_xmin-1+j,k)
@@ -526,7 +526,7 @@ CONTAINS
 
     ! Density 0
     IF(fields(FIELD_DENSITY0).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+depth
           density0(j,y_max+k)=top_density0(j,top_ymin-1+k)
@@ -536,7 +536,7 @@ CONTAINS
 
     ! Density 1
     IF(fields(FIELD_DENSITY1).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+depth
           density1(j,y_max+k)=top_density1(j,top_ymin-1+k)
@@ -547,7 +547,7 @@ CONTAINS
    
     ! Energy 0
     IF(fields(FIELD_ENERGY0).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+depth
           energy0(j,y_max+k)=top_energy0(j,top_ymin-1+k)
@@ -557,7 +557,7 @@ CONTAINS
 
     ! Energy 1
     IF(fields(FIELD_DENSITY1).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+depth
           energy1(j,y_max+k)=top_energy1(j,top_ymin-1+k)
@@ -568,7 +568,7 @@ CONTAINS
   
     ! Pressure
     IF(fields(FIELD_PRESSURE).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+depth
           pressure(j,y_max+k)=top_pressure(j,top_ymin-1+k)
@@ -578,7 +578,7 @@ CONTAINS
 
     ! Viscocity
     IF(fields(FIELD_VISCOSITY).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+depth
           viscosity(j,y_max+k)=top_viscosity(j,top_ymin-1+k)
@@ -588,7 +588,7 @@ CONTAINS
 
     ! Soundspeed
     IF(fields(FIELD_SOUNDSPEED).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+depth
           soundspeed(j,y_max+k)=top_soundspeed(j,top_ymin-1+k)
@@ -599,7 +599,7 @@ CONTAINS
 
     ! XVEL 0
     IF(fields(FIELD_XVEL0).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+1+depth
           xvel0(j,y_max+1+k)=top_xvel0(j,top_ymin+1-1+k)
@@ -609,7 +609,7 @@ CONTAINS
 
     ! XVEL 1
     IF(fields(FIELD_XVEL1).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+1+depth
           xvel1(j,y_max+1+k)=top_xvel1(j,top_ymin+1-1+k)
@@ -619,7 +619,7 @@ CONTAINS
 
     ! YVEL 0
     IF(fields(FIELD_YVEL0).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+1+depth
           yvel0(j,y_max+1+k)=top_yvel0(j,top_ymin+1-1+k)
@@ -629,7 +629,7 @@ CONTAINS
 
     ! YVEL 1
     IF(fields(FIELD_YVEL1).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+1+depth
           yvel1(j,y_max+1+k)=top_yvel1(j,top_ymin+1-1+k)
@@ -639,7 +639,7 @@ CONTAINS
 
     ! VOL_FLUX_X
     IF(fields(FIELD_VOL_FLUX_X).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+1+depth
           vol_flux_x(j,y_max+k)=top_vol_flux_x(j,top_ymin-1+k)
@@ -649,7 +649,7 @@ CONTAINS
 
     ! MASS_FLUX_X
     IF(fields(FIELD_MASS_FLUX_X).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+1+depth
           mass_flux_x(j,y_max+k)=top_mass_flux_x(j,top_ymin-1+k)
@@ -659,7 +659,7 @@ CONTAINS
 
     ! VOL_FLUX_Y
     IF(fields(FIELD_VOL_FLUX_Y).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+depth
           vol_flux_y(j,y_max+1+k)=top_vol_flux_y(j,top_ymin+1-1+k)
@@ -669,7 +669,7 @@ CONTAINS
 
     ! MASS_FLUX_Y
     IF(fields(FIELD_MASS_FLUX_Y).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+depth
           mass_flux_y(j,y_max+1+k)=top_mass_flux_y(j,top_ymin+1-1+k)
@@ -750,7 +750,7 @@ CONTAINS
 
     ! Density 0
     IF(fields(FIELD_DENSITY0).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+depth
           density0(j,y_min-k)=bottom_density0(j,bottom_ymax+1-k)
@@ -760,7 +760,7 @@ CONTAINS
 
     ! Density 1
     IF(fields(FIELD_DENSITY1).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+depth
           density1(j,y_min-k)=bottom_density1(j,bottom_ymax+1-k)
@@ -771,7 +771,7 @@ CONTAINS
    
     ! Energy 0
     IF(fields(FIELD_ENERGY0).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+depth
           energy0(j,y_min-k)=bottom_energy0(j,bottom_ymax+1-k)
@@ -781,7 +781,7 @@ CONTAINS
 
     ! Energy 1
     IF(fields(FIELD_DENSITY1).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+depth
           energy1(j,y_min-k)=bottom_energy1(j,bottom_ymax+1-k)
@@ -792,7 +792,7 @@ CONTAINS
   
     ! Pressure
     IF(fields(FIELD_PRESSURE).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+depth
           pressure(j,y_min-k)=bottom_pressure(j,bottom_ymax+1-k)
@@ -802,7 +802,7 @@ CONTAINS
 
     ! Viscocity
     IF(fields(FIELD_VISCOSITY).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+depth
           viscosity(j,y_min-k)=bottom_viscosity(j,bottom_ymax+1-k)
@@ -812,7 +812,7 @@ CONTAINS
 
     ! Soundspeed
     IF(fields(FIELD_SOUNDSPEED).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+depth
           soundspeed(j,y_min-k)=bottom_soundspeed(j,bottom_ymax+1-k)
@@ -823,7 +823,7 @@ CONTAINS
 
     ! XVEL 0
     IF(fields(FIELD_XVEL0).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+1+depth
           xvel0(j,y_min-k)=bottom_xvel0(j,bottom_ymax+1-k)
@@ -833,7 +833,7 @@ CONTAINS
 
     ! XVEL 1
     IF(fields(FIELD_XVEL1).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+1+depth
           xvel1(j,y_min-k)=bottom_xvel1(j,bottom_ymax+1-k)
@@ -843,7 +843,7 @@ CONTAINS
 
     ! YVEL 0
     IF(fields(FIELD_YVEL0).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+1+depth
           yvel0(j,y_min-k)=bottom_yvel0(j,bottom_ymax+1-k)
@@ -853,7 +853,7 @@ CONTAINS
 
     ! YVEL 1
     IF(fields(FIELD_YVEL1).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+1+depth
           yvel1(j,y_min-k)=bottom_yvel1(j,bottom_ymax+1-k)
@@ -863,7 +863,7 @@ CONTAINS
 
     ! VOL_FLUX_X
     IF(fields(FIELD_VOL_FLUX_X).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+1+depth
           vol_flux_x(j,y_min-k)=bottom_vol_flux_x(j,bottom_ymax+1-k)
@@ -873,7 +873,7 @@ CONTAINS
 
     ! MASS_FLUX_X
     IF(fields(FIELD_MASS_FLUX_X).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+1+depth
           mass_flux_x(j,y_min-k)=bottom_mass_flux_x(j,bottom_ymax+1-k)
@@ -883,7 +883,7 @@ CONTAINS
 
     ! VOL_FLUX_Y
     IF(fields(FIELD_VOL_FLUX_Y).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+depth
           vol_flux_y(j,y_min-k)=bottom_vol_flux_y(j,bottom_ymax+1-k)
@@ -893,7 +893,7 @@ CONTAINS
 
     ! MASS_FLUX_Y
     IF(fields(FIELD_MASS_FLUX_Y).EQ.1) THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=1,depth
         DO j=x_min-depth, x_max+depth
           mass_flux_y(j,y_min-k)=bottom_mass_flux_y(j,bottom_ymax+1-k)

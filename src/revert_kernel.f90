@@ -38,7 +38,7 @@ CONTAINS
 
     INTEGER :: j,k
 
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
     DO k=y_min,y_max
       DO j=x_min,x_max
         density1(j,k)=density0(j,k)

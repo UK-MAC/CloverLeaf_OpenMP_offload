@@ -87,9 +87,8 @@ CONTAINS
     jk_control=1.1
 
 
-    !$omp target teams distribute parallel do reduction(min: dt_min_val)
+    !$omp target teams distribute parallel do simd collapse(2) reduction(min: dt_min_val)
     DO k=y_min,y_max
-    !$omp simd
       DO j=x_min,x_max
 
         dsx=celldx(j)

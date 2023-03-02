@@ -48,7 +48,7 @@ CONTAINS
 
     ! Note that the loops calculate one extra flux than required, but this
     ! allows loop fusion that improves performance
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
     DO k=y_min,y_max+1
       DO j=x_min,x_max+1
         vol_flux_x(j,k)=0.25_8*dt*xarea(j,k)                  &

@@ -81,7 +81,7 @@ CONTAINS
 
     IF(dir.EQ.g_xdir) THEN
       IF(sweep_number.EQ.1)THEN
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
         DO k=y_min-2,y_max+2
           DO j=x_min-2,x_max+2
             pre_vol(j,k)=volume(j,k)+(vol_flux_x(j+1,k  )-vol_flux_x(j,k)+vol_flux_y(j  ,k+1)-vol_flux_y(j,k))
@@ -89,7 +89,7 @@ CONTAINS
           ENDDO
         ENDDO
       ELSE
-!$omp target teams distribute parallel do              
+!$omp target teams distribute parallel do simd collapse(2)
         DO k=y_min-2,y_max+2
           DO j=x_min-2,x_max+2
             pre_vol(j,k)=volume(j,k)+vol_flux_x(j+1,k)-vol_flux_x(j,k)
@@ -98,7 +98,7 @@ CONTAINS
         ENDDO
 
       ENDIF
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min,y_max
         DO j=x_min,x_max+2
 
@@ -149,7 +149,7 @@ CONTAINS
 
         ENDDO
       ENDDO
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min,y_max
         DO j=x_min,x_max
           pre_mass_s=density1(j,k)*pre_vol(j,k)
@@ -164,7 +164,7 @@ CONTAINS
     ELSEIF(dir.EQ.g_ydir) THEN
 
       IF(sweep_number.EQ.1)THEN
-!$omp target teams distribute parallel do              
+!$omp target teams distribute parallel do simd collapse(2)
         DO k=y_min-2,y_max+2
           DO j=x_min-2,x_max+2
             pre_vol(j,k)=volume(j,k)+(vol_flux_y(j  ,k+1)-vol_flux_y(j,k)+vol_flux_x(j+1,k  )-vol_flux_x(j,k))
@@ -172,7 +172,7 @@ CONTAINS
           ENDDO
         ENDDO
       ELSE
-!$omp target teams distribute parallel do              
+!$omp target teams distribute parallel do simd collapse(2)
         DO k=y_min-2,y_max+2
           DO j=x_min-2,x_max+2
             pre_vol(j,k)=volume(j,k)+vol_flux_y(j  ,k+1)-vol_flux_y(j,k)
@@ -180,7 +180,7 @@ CONTAINS
           ENDDO
         ENDDO
       ENDIF
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel dosimd collapse(2)
       DO k=y_min,y_max+2
         DO j=x_min,x_max
 
@@ -230,7 +230,7 @@ CONTAINS
 
         ENDDO
       ENDDO
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel dosimd collapse(2)
       DO k=y_min,y_max
         DO j=x_min,x_max
           pre_mass_s=density1(j,k)*pre_vol(j,k)

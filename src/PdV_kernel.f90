@@ -65,7 +65,7 @@ CONTAINS
     REAL(KIND=8)  :: volume_change_s
 
     IF(predict)THEN
-!$omp target teams distribute parallel do 
+!$omp target teams distribute parallel do simd collapse(2)
 !PRIVATE(right_flux,left_flux,top_flux,bottom_flux,total_flux,min_cell_volume,energy_change,recip_volume,volume_change_s)
       DO k=y_min,y_max
         DO j=x_min,x_max
@@ -99,7 +99,7 @@ CONTAINS
 
 
     ELSE
-!$omp target teams distribute parallel do
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min,y_max
 !PRIVATE(right_flux,left_flux,top_flux,bottom_flux,total_flux,min_cell_volume,energy_change,recip_volume,volume_change_s)
         DO j=x_min,x_max
