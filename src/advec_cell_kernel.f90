@@ -180,7 +180,7 @@ CONTAINS
           ENDDO
         ENDDO
       ENDIF
-!$omp target teams distribute parallel dosimd collapse(2)
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min,y_max+2
         DO j=x_min,x_max
 
@@ -230,7 +230,7 @@ CONTAINS
 
         ENDDO
       ENDDO
-!$omp target teams distribute parallel dosimd collapse(2)
+!$omp target teams distribute parallel do simd collapse(2)
       DO k=y_min,y_max
         DO j=x_min,x_max
           pre_mass_s=density1(j,k)*pre_vol(j,k)
