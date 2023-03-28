@@ -1,6 +1,6 @@
 # CloverLeaf_OpenMP_offload
 
-This is the OpenMP offload version of CloverLeaf version 1.3 for GPUs (tested on AMD and NVidia).
+This is the OpenMP offload version of CloverLeaf version 1.3 for GPUs (tested on AMD and Nvidia).
 
 ## Release Notes
 
