@@ -51,7 +51,7 @@ CONTAINS
     ke=0.0
     press=0.0
 
-    !$omp target teams distribute parallel do simd collapse(2) reduction(+:vol,mass,press,ie,ke)
+    !$omp target teams distribute parallel do reduction(+:vol,mass,press,ie,ke)
     DO k=y_min,y_max
       DO j=x_min,x_max
         vsqrd=0.0
