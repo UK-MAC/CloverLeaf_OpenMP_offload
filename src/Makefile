@@ -81,7 +81,7 @@ FLAGS_XL        = -O5 -qipa=partition=large -g -qfullpath -Q -qsigtrap -qextname
 CFLAGS_INTEL     = -O3 -restrict -fno-alias #-no-prec-div
 CFLAGS_SUN       = -fast -xipo=2
 CFLAGS_GNU       = -O3 -march=native -funroll-loops
-CFLAGS_CRAY      = -em -h list=a
+CFLAGS_CRAY      = 
 CFLAGS_PGI       = -mp -fastsse -Mipa=fast -Mlist
 CFLAGS_PATHSCALE = -O3
 CFLAGS_XL       = -O5 -qipa=partition=large -g -qfullpath -Q -qlistopt -qattr=full -qlist -qreport -qxref=full -qsource -qsuppress=1506-224:1500-036 -qsrcmsg
